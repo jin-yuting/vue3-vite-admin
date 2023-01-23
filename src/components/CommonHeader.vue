@@ -70,7 +70,11 @@ header{
     color: #fff;
   }
 }
-.bread /deep/span{
+// .bread /deep/ span{
+//   color: #fff;
+//   cursor: pointer;
+// }
+:deep(.bread span){
   color: #fff;
   cursor: pointer;
 }
