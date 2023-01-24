@@ -14,12 +14,12 @@
     <div class="r-content">
       <el-dropdown>
     <span class="el-dropdown-link">
-      
+      欢迎
     </span>
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item>个人中心</el-dropdown-item>
-        <el-dropdown-item>退出</el-dropdown-item>
+        <el-dropdown-item @click="handleOut">退出</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
@@ -29,10 +29,12 @@
 
 <script>
 import { computed, defineComponent } from 'vue';
+import { useRouter } from 'vue-router';
 import { useStore } from "vuex";
 export default defineComponent({
   setup() {
     let store = useStore();
+    const router = useRouter();
     const  getImgsrc = () =>{
       return new URL(``, import.meta.url).href;
     }
@@ -43,10 +45,18 @@ export default defineComponent({
     const current = computed(()=>{
       return store.state.currentMenu;
     })
+    // 推出
+    const handleOut = ()=>{
+      // store.commit('clearMenu');
+      router.push({
+        name: 'login'
+      })
+    }
     return{
       getImgsrc,
       handleCollapse,
-      current
+      current,
+      handleOut
     }
   }
 })

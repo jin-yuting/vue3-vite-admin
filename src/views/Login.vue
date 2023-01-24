@@ -5,7 +5,7 @@
       <el-input type="input" v-model="form.username" placeholder="请输入账号" />
     </el-form-item>
     <el-form-item>
-      <el-input type="password" v-model="form.password" placeholder="请输入密码" />
+      <el-input type="password" v-model="form.keyword" placeholder="请输入密码" />
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="login">登录</el-button>
@@ -16,6 +16,7 @@
 <script>
 import { reactive } from 'vue-demi'
 import router from '../router'
+import store from '../store'
 export default {
   setup() {
     const form = reactive({
@@ -23,10 +24,14 @@ export default {
       keyword: 'admin'
     })
     const login = ()=>{
+      // 登录成功获取menu数据，存储到vuex中， aside组件中获取vuex数据展示左侧菜单
+      // store.commit('setMenu',  );
+      // store.commit('addMenu',  );
+      // store.commit('setToken',  );
+      // 
       router.push({
         name: 'home'
       })
-      // 登录成功获取menu数据，存储到vuex中， aside组件中获取vuex数据展示左侧菜单
     }
     return{
       form,

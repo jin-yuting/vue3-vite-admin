@@ -1,9 +1,10 @@
 import { createStore } from "vuex";
-
+import Cookie from 'js-cookie';
 export default createStore({
   state:{
     isCollapse: true,
     currentMenu: null,
+    token: '',
     tabsList: [
       {
         path: '/',
@@ -38,6 +39,21 @@ export default createStore({
       }
       const menu = JSON.parse(localStorage.getItem('menu'))
       state.menu = menu
+    },
+    clearMenu(state){
+      state.menu = [];
+      localStorage.removeItem(menu)
+    },
+    setToken(state,val){
+      state.token = val
+      Cookie.set('token',val);
+    },
+    clearToken(){
+      state.token = ''
+      Cookie.remove('token')
+    },
+    getToken(){
+      // state.token = state.token || Cookie.get('token')
     }
   }
 })
