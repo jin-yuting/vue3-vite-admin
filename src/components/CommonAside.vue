@@ -102,6 +102,10 @@ export default {
       });
       store.commit('selectMenu',item)
     }
+    /**
+     * list 根据用户展示不用权限
+     **/ 
+
     return{
       noChildren,
       hasChildren,

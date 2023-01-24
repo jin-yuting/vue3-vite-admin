@@ -31,6 +31,13 @@ export default createStore({
     closeTab(state,val){
       let res = state.tabsList.findIndex(item=>item.name === val.name)
       state.tabsList.splice(res,1)
+    },
+    addMenu(state){// menu数据持久化处理
+      if(!localStorage.getItem('menu')){
+        return
+      }
+      const menu = JSON.parse(localStorage.getItem('menu'))
+      state.menu = menu
     }
   }
 })

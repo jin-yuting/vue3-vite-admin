@@ -1,5 +1,8 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+// 处理menu数据持久化
+import { useStore } from 'vuex';
+const store = useStore();
+store.commit('addMenu')
 </script>
 
 <template>

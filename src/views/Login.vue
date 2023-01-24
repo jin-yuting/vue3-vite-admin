@@ -2,27 +2,35 @@
   <el-form :model="loginForm" class="login-container">
     <h3>系统登录</h3>
     <el-form-item>
-      <el-input type="input" v-model="form.keyword" placeholder="请输入账号" />
+      <el-input type="input" v-model="form.username" placeholder="请输入账号" />
     </el-form-item>
     <el-form-item>
-      <el-input v-model="form.password" placeholder="请输入密码" />
+      <el-input type="password" v-model="form.password" placeholder="请输入密码" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary">登录</el-button>
+      <el-button type="primary" @click="login">登录</el-button>
     </el-form-item>
   </el-form>
 </template>
 
 <script>
 import { reactive } from 'vue-demi'
+import router from '../router'
 export default {
   setup() {
     const form = reactive({
-      keyword: ''
+      username:'admin',
+      keyword: 'admin'
     })
-
+    const login = ()=>{
+      router.push({
+        name: 'home'
+      })
+      // 登录成功获取menu数据，存储到vuex中， aside组件中获取vuex数据展示左侧菜单
+    }
     return{
-      form
+      form,
+      login
     }
   },
 }
